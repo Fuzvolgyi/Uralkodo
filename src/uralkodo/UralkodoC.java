@@ -13,9 +13,16 @@ import java.util.Random;
 public class UralkodoC {
     private static final Random RANDOM=new Random();
     
+    private String nev;
     private int uralkodasKezdete;
     private int uralkodasHossza;
+    private int uralkodasVege;
     private int elegedetseg;
+
+    @Override
+    public String toString() {
+        return "UralkodoC{" + "nev=" + nev + ", uralkodasKezdete=" + uralkodasKezdete + ", uralkodasHossza=" + uralkodasHossza + ", uralkodasVege=" + uralkodasVege + ", elegedetseg=" + elegedetseg + '}';
+    }
 
     //<editor-fold defaultstate="collapsed" desc="getters-setters">
     public int getUralkodasKezdete() {
@@ -41,27 +48,44 @@ public class UralkodoC {
     public void setElegedetseg(int elegedetseg) {
         this.elegedetseg = elegedetseg;
     }
+    
+    public String getNev() {
+        return nev;
+    }
+
+    public void setNev(String nev) {
+        this.nev = nev;
+    }
+    
+    public int getUralkodasVege() {
+        return uralkodasVege;
+    }
+
+    public void setUralkodasVege(int uralkodasVege) {
+        this.uralkodasVege = uralkodasVege;
+    }
 //</editor-fold>
     
     
 
     static ArrayList<UralkodoC> getUralkodok(int darabUralkodo) {
        ArrayList<UralkodoC> eredmeny=new ArrayList<>();
-        UralkodoC temp;
+       int szamolo = 0;
+       UralkodoC temp;
        for (int i = 0; i < darabUralkodo; i++) {
             temp=new UralkodoC(); 
             temp.elegedetseg=RANDOM.nextInt(11);
             temp.uralkodasHossza=RANDOM.nextInt(50)+1;
             temp.uralkodasKezdete=RANDOM.nextInt(917)+1000;
+            temp.nev = szamolo + ".Laszlo";
+            temp.uralkodasVege = temp.uralkodasKezdete + temp.uralkodasHossza;
+            szamolo++;
             eredmeny.add(temp);
         }
        
        return eredmeny;
     }
 
-    boolean atfedes(UralkodoC masikUralkodo) {
-        int vege=uralkodasHossza+uralkodasKezdete;
-        return false;
-    }
+   
 
 }
